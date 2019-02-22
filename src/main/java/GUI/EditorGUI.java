@@ -4,18 +4,43 @@ import Liquid.Renderer;
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 
 public class EditorGUI extends JFrame {
     public EditorGUI() {
 
-        TextPanel input = new TextPanel("Hello {{name}}. I hope you have {{ name }}", Color.white);
+
         HashMap context = new HashMap<String, String>();
         context.put("name", "WORLD");
-        Renderer view = new Renderer(input.getText(), context);
+        context.put("what", "fun!");
 
+        TextPanel input = new TextPanel("Hello {{name}}. I hope you have {{ what }}", Color.white);
+
+        Renderer view = new Renderer(input.getText(), context);
         TextPanel output = new TextPanel(view.render(), new Color(232, 232, 232));
         output.makeReadonly();
+
+        JTextPane pane = input.getPane();
+        pane.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                output.clearText();
+                output.setText(new Renderer(pane.getText(), context).render());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+
 
         setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         setLayout(new GridLayout(0, 2));

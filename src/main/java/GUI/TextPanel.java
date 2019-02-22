@@ -6,32 +6,15 @@ import java.awt.*;
 
 class TextPanel {
     private JScrollPane scroll;
-    private Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
     private StyledDocument document;
     private JTextPane panel;
 
     TextPanel(String initialContent, Color background) {
         panel = new JTextPane();
-        panel.setMargin(new Insets(12, 12,12,12));
-        panel.setBackground(background);
-
         document = panel.getStyledDocument();
-        document.addStyle("default", defaultStyle);
-
-        StyleConstants.setFontFamily(defaultStyle, "SansSerif");
-        StyleConstants.setFontSize(defaultStyle, 20);
-        StyleConstants.setForeground(defaultStyle, new Color(34,34,34));
-
-        try {
-            document.insertString(document.getLength(), initialContent, document.getStyle("default"));
-        } catch (BadLocationException ble) {
-            System.err.println(ble.getMessage());
-        }
+        setupLooks(background);
+        setText(initialContent);
         scroll = new JScrollPane(panel);
-    }
-
-    Style getDefaultStyle() {
-        return defaultStyle;
     }
 
     String getText() {
@@ -46,7 +29,38 @@ class TextPanel {
         return scroll;
     }
 
+    JTextPane getPane() {
+        return panel;
+    }
+
     void makeReadonly() {
         panel.setEditable(false);
+    }
+
+    private void setupLooks(Color background) {
+        panel.setMargin(new Insets(12, 12,12,12));
+        panel.setBackground(background);
+
+        Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
+        document.addStyle("default", defaultStyle);
+        StyleConstants.setFontFamily(defaultStyle, "SansSerif");
+        StyleConstants.setFontSize(defaultStyle, 20);
+        StyleConstants.setForeground(defaultStyle, new Color(34,34,34));
+    }
+
+    public void setText(String content) {
+        try {
+            document.insertString(document.getLength(), content, document.getStyle("default"));
+        } catch (BadLocationException ble) {
+            System.err.println(ble.getMessage());
+        }
+    }
+
+    public void clearText() {
+        try {
+            document.remove(0, document.getLength());
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -13,7 +13,11 @@ public class Renderer {
     }
 
     public String render() {
-        Template liquidTemplate = Template.parse(template);
-        return liquidTemplate.render(context);
+        try {
+            Template liquidTemplate = Template.parse(template);
+            return liquidTemplate.render(context);
+        } catch (RuntimeException ex) {
+            return ex.getMessage();
+        }
     }
 }
