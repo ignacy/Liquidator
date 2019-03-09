@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e751205e-296a-4f95-91c3-7ee3544feac2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Liquid/Context.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/EditorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/EditorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Liquid/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Liquid/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Liquidator/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Liquidator/App.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -55,10 +52,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GUI/EditorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+            <state relative-caret-position="127">
+              <caret line="65" column="11" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2435#2814#0" expanded="true" />
+                <element signature="e#2813#2814#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GUI/TextPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+            <state relative-caret-position="426">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,7 +184,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552118729977" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552120495702" />
     <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -306,12 +305,12 @@
       <workItem from="1550258084054" duration="944000" />
       <workItem from="1550261895437" duration="736000" />
       <workItem from="1550858362718" duration="4286000" />
-      <workItem from="1552068505781" duration="2805000" />
+      <workItem from="1552068505781" duration="4162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12304000" />
+    <option name="totallyTimeSpent" value="13661000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -397,20 +396,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/TextPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Liquid/Context.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/TextPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -436,10 +435,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GUI/EditorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+        <state relative-caret-position="127">
+          <caret line="65" column="11" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2435#2814#0" expanded="true" />
+            <element signature="e#2813#2814#0" expanded="true" />
           </folding>
         </state>
       </provider>

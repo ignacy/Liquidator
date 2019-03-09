@@ -7,6 +7,11 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 
 /**
@@ -52,11 +57,27 @@ public class EditorGUI extends JFrame {
         controlPanel.add(input.getScroll());
         controlPanel.add(output.getScroll());
 
-        setLayout(new GridLayout(2,1));
+        getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        JLabel label1 = new JLabel("Image and Text", JLabel.CENTER);
+        JLabel link = new JLabel();
+        link.setText("<html>Edytor umożliwia tworzenie szablonów Liquid z podglądem na żywo. Pełna dokumenatcja samych szablonów jest dostępna, wraz z przykładami <a href=\"https://shopify.github.io/liquid/basics/introduction/\">pod tym adresem </a></html>");
+        link.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        link.setFont(new Font("Sans Serif", Font.PLAIN, 18));
+        link.setForeground(Color.GRAY);
+        link.setAlignmentX(0.5f);
 
-        getContentPane().add(label1);
+        link.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://shopify.github.io/liquid/basics/introduction/"));
+                } catch (URISyntaxException | IOException ex) {
+                    //It looks like there's a problem
+                }
+            }
+        });
+
+        getContentPane().add(link);
         getContentPane().add(controlPanel);
 
         pack();
