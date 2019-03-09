@@ -27,7 +27,7 @@ public class EditorGUI extends JFrame {
         Renderer view = new Renderer(input.getText(), context);
 
         // Panel gdzie widoczne będą rezultaty renderowania szablonów Liquid
-        TextPanel output = new TextPanel(view.render(), new Color(232, 232, 232));
+        TextPanel output = new TextPanel(view.render(), new Color(208, 232, 203));
         // Zawartość panelu będzie tylko do odczytu
         output.makeReadonly();
 
@@ -54,8 +54,8 @@ public class EditorGUI extends JFrame {
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new GridLayout(0, 2));
         controlPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        controlPanel.add(input.getScroll());
         controlPanel.add(output.getScroll());
+        controlPanel.add(input.getScroll());
 
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
