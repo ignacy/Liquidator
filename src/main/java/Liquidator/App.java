@@ -1,20 +1,18 @@
 package Liquidator;
 
 import GUI.EditorGUI;
-import Liquid.Renderer;
+import Liquid.Context;
 
 import javax.swing.*;
-import java.util.HashMap;
 
 public class App {
     public static void main(String[] args) {
-
         JFrame.setDefaultLookAndFeelDecorated(true);
-        new EditorGUI();
+        Context context = new Context<String, String>();
+        context.put("co", "tekst");
+        context.put("gdzie", "po prawej stronie");
 
-        HashMap context = new HashMap<String, String>();
-        context.put("name", "WORLD");
-        Renderer view = new Renderer("Hi there {{ name }}!", context);
-        System.out.println(view.render());
+
+        new EditorGUI(context);
     }
 }

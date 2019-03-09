@@ -14,7 +14,8 @@ public class Renderer {
 
     public String render() {
         try {
-            Template liquidTemplate = Template.parse(template);
+            Template liquidTemplate = Template.parse(template)
+                    .withRenderSettings(new RenderSettings.Builder().withStrictVariables(true).build());
             return liquidTemplate.render(context);
         } catch (RuntimeException ex) {
             return ex.getMessage();
