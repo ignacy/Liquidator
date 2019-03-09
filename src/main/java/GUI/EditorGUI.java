@@ -80,6 +80,16 @@ public class EditorGUI extends JFrame {
         getContentPane().add(link);
         getContentPane().add(controlPanel);
 
+
+        JMenuBar mb = new JMenuBar();
+        setJMenuBar(mb);
+        JMenu file = new JMenu("Plik");
+        mb.add(file);
+        JMenu edit = new JMenu("Edycja");
+        mb.add(edit);
+        JMenu help = new JMenu("Pomoc");
+        mb.add(help);
+
         pack();
         // setExtendedState(JFrame.MAXIMIZED_BOTH);
         setSize(1500, 1000);
