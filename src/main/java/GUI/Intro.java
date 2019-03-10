@@ -8,9 +8,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-/**
- * Sekcja wprowadzająca z informacjami i dokumentacją.
- */
 class Intro {
         private JLabel label;
         private final String documentationLink = "https://shopify.github.io/liquid/basics/introduction/";

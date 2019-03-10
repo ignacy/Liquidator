@@ -7,27 +7,17 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-/**
- * Główna klasa zajmująca się renderowaniem i obsługą interfejsu użytkownika
- */
 public class EditorGUI extends JFrame {
     public EditorGUI(Context context) {
-       // Panel w którym edytowany jest tekst szablonu, wypełniony
-        // przykładowym tekstem/zachętą
         TextPanel input = new TextPanel("Witaj! \n\nMożesz edytować ten {{ co }} rezultaty \npojawią się {{ gdzie }}", Color.white);
 
-        // Renderujemy zachęte
         Renderer view = new Renderer(input.getText(), context);
 
-        // Panel gdzie widoczne będą rezultaty renderowania szablonów Liquid
         TextPanel output = new TextPanel(view.render(), new Color(243, 243, 243));
-        // Zawartość panelu będzie tylko do odczytu
         output.makeReadonly();
 
         JTextPane pane = input.getPane();
 
-        // implementacja interfejsu KeyListener
-        // w celu obsługi klawiszy
         pane.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
