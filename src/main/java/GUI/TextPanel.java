@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 class TextPanel {
     private JScrollPane scroll;
@@ -43,9 +45,9 @@ class TextPanel {
 
         Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
         document.addStyle("default", defaultStyle);
-        StyleConstants.setFontFamily(defaultStyle, "SansSerif");
-        StyleConstants.setFontSize(defaultStyle, 20);
-        StyleConstants.setForeground(defaultStyle, new Color(34,34,34));
+        StyleConstants.setFontFamily(defaultStyle, "Monospaced");
+        StyleConstants.setFontSize(defaultStyle, 22);
+        StyleConstants.setForeground(defaultStyle, new Color(0, 0, 1));
     }
 
     public void setText(String content) {
