@@ -43,7 +43,7 @@ public class EditorGUI extends JFrame {
 
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         Intro intro = new Intro();
-        InputTable table = new InputTable();
+        InputTable table = new InputTable(context.asTableContents());
         getContentPane().add(intro.getLabel());
         getContentPane().add(editingArea);
         getContentPane().add(table.getScroll());

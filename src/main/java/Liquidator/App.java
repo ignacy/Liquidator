@@ -10,7 +10,7 @@ import javax.swing.plaf.metal.OceanTheme;
 public class App {
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        Context context = new Context<String, String>();
+        Context context = new Context();
         context.put("co", "tekst");
         context.put("gdzie", "po prawej stronie");
 
