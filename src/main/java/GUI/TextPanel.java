@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.text.*;
 import java.awt.*;
 import java.io.IOException;
@@ -15,7 +16,11 @@ class TextPanel {
         panel = new JTextPane();
         document = panel.getStyledDocument();
         setupLooks(background);
-        setText(initialContent);
+        try {
+            setText(initialContent);
+        } catch (BadLocationException ex) {
+            markAsError();
+        }
         scroll = new JScrollPane(panel);
     }
 
@@ -50,19 +55,17 @@ class TextPanel {
         StyleConstants.setForeground(defaultStyle, new Color(0, 0, 1));
     }
 
-    public void setText(String content) {
-        try {
-            document.insertString(document.getLength(), content, document.getStyle("default"));
-        } catch (BadLocationException ble) {
-            System.err.println(ble.getMessage());
-        }
+    void setText(String content) throws BadLocationException {
+        panel.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        document.insertString(document.getLength(), content, document.getStyle("default"));
     }
 
-    public void clearText() {
-        try {
-            document.remove(0, document.getLength());
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
+    void markAsError() {
+        Border border = BorderFactory.createLineBorder(Color.RED);
+        panel.setBorder(border);
+    }
+
+    void clearText() throws BadLocationException {
+        document.remove(0, document.getLength());
     }
 }

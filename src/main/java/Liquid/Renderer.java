@@ -12,13 +12,13 @@ public class Renderer {
         this.context = context;
     }
 
-    public String render() {
+    public String render() throws LiquidException {
         try {
             Template liquidTemplate = Template.parse(template)
                     .withRenderSettings(new RenderSettings.Builder().withStrictVariables(true).build());
             return liquidTemplate.render(context);
         } catch (RuntimeException ex) {
-            return ex.getMessage();
+            throw new LiquidException(ex.getMessage());
         }
     }
 }
