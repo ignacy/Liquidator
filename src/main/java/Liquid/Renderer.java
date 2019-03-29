@@ -3,6 +3,10 @@ package Liquid;
 import java.util.HashMap;
 import liqp.*;
 
+/*
+ * Klasa odpowiedzialna za połączenie kontekstu (wartości dla szablonu),
+ * oraz szablonu i utworzenie postaci wynikowej.
+ */
 public class Renderer {
     private String template;
     private HashMap context;

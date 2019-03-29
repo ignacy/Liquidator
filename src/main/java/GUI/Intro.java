@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/*
+ * Sekcja nagłownka zawierająca odnośnik do dokumentacji Liquid
+ */
 class Intro {
         private JLabel label;
         private final String documentationLink = "https://shopify.github.io/liquid/basics/introduction/";

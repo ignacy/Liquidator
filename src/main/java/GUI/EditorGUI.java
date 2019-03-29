@@ -11,80 +11,109 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class EditorGUI extends JFrame {
+/**
+ * Głowny kontroler aplikacji:
+ * - łączy wszystkie elementy interfejsu użytkownika
+ * - obsługuje zdażenia
+ * - obsługuje błędy
+ */
+public class EditorGUI extends JFrame implements TableModelListener, KeyListener {
+    InputTable table;
+    TextPanel input, output;
+    Renderer view;
+    JTextPane pane;
+    JPanel editingArea;
+    ErrorDetails errorLabel;
+
+    private String initialTemplateContent = "Witaj! \n " +
+            "\nMożesz edytować ten {{ co }} rezultaty \n " +
+            "pojawią się {{ gdzie }}. \n\n\n" +
+            "{% for i in (1..5) %}\n" +
+            "  {% for i in (1..i) %}" +
+            "{{i}} " + "{% endfor %}\n" +
+            "{% endfor %}\n" +
+            "{{ hello | upcase }}\n" +
+            "{{ \"Witaj \" | append: \" świecie!\" }}"
+            ;
+
     public EditorGUI() {
-        Intro intro = new Intro();
-        InputTable table = new InputTable();
-        TextPanel input = new TextPanel(
-                "Witaj! \n\nMożesz edytować ten {{ co }} rezultaty \npojawią się {{ gdzie }}. \n" +
-                        "\n\n" +
-                        "{% for i in (1..5) %}\n" + "  {% for i in (1..i) %}" + "{{i}} " + "{% endfor %}\n" +
-                        "{% endfor %}",
-                Color.white
-        );
-        Renderer view = new Renderer(input.getText(), table.getContext());
-        TextPanel output = new TextPanel("", new Color(243, 243, 243));
+        // Tabela do ustawiania par klucz - wartość do wypełnienia szablonu
+        table = new InputTable();
+        table.getModel().addTableModelListener(this);
+
+        // Pole z wartością szablonu
+        input = new TextPanel(initialTemplateContent, Color.WHITE);
+        pane = input.getPane();
+        pane.addKeyListener(this);
+
+        // Widok łączący dane i szablon
+        view = new Renderer(input.getText(), table.getContext());
+
+        // Panel prezentujący postać wynikową
+        output = new TextPanel("", new Color(243, 243, 243));
+        output.makeReadonly();
+
+        errorLabel = new ErrorDetails();
 
         try {
             output.setText(view.render());
         } catch (LiquidException | BadLocationException ex) {
+            errorLabel.getLabel().setText(ex.getMessage());
             output.markAsError();
         }
 
-        JTextPane pane = input.getPane();
-        JPanel editingArea = new JPanel();
-        Menu menu = new Menu(input);
-
-        output.makeReadonly();
-        pane.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                try {
-                    output.clearText();
-                    output.setText(new Renderer(pane.getText(), table.getContext()).render());
-                } catch (LiquidException | BadLocationException ex) {
-                    output.markAsError();
-                }
-            }
-        });
-
-        table.getModel().addTableModelListener(new TableModelListener() {
-            @Override
-            public void tableChanged(TableModelEvent e) {
-                try {
-                    output.clearText();
-                    output.setText(new Renderer(pane.getText(), table.getContext()).render());
-                } catch (LiquidException | BadLocationException ex) {
-                    output.markAsError();
-                }
-            }
-        });
-
+        editingArea = new JPanel();
         editingArea.setLayout(new GridLayout(0, 2));
         editingArea.add(input.getScroll());
         editingArea.add(output.getScroll());
 
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        getContentPane().add(intro.getLabel());
+        getContentPane().add(new Intro().getLabel());
         getContentPane().add(editingArea);
+        getContentPane().add(errorLabel.getLabel());
         getContentPane().add(table.getScroll());
 
-        setJMenuBar(menu.getMenuBar());
+        setJMenuBar(new Menu(input).getMenuBar());
 
         pack();
-        // setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setSize(1600, 1000);
         setVisible(true);
         setLocationRelativeTo(null);
         setBackground(new Color(255, 255, 255));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void tableChanged(TableModelEvent e) {
+        try {
+            errorLabel.getLabel().setText("");
+            output.clearText();
+            output.setText(new Renderer(pane.getText(), table.getContext()).render());
+        } catch (LiquidException | BadLocationException ex) {
+            errorLabel.getLabel().setText(ex.getMessage());
+            output.markAsError();
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        try {
+            errorLabel.getLabel().setText("");
+            output.clearText();
+            output.setText(new Renderer(pane.getText(), table.getContext()).render());
+        } catch (LiquidException | BadLocationException ex) {
+            output.markAsError();
+            errorLabel.getLabel().setText(ex.getMessage());
+        }
     }
 }

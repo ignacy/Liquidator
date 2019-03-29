@@ -4,9 +4,9 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.*;
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
 
+
+// Klasa obsługująca pole tekstowe edytora
 class TextPanel {
     private JScrollPane scroll;
     private StyledDocument document;
@@ -45,7 +45,7 @@ class TextPanel {
     }
 
     private void setupLooks(Color background) {
-        panel.setMargin(new Insets(12, 12,12,12));
+        panel.setMargin(new Insets(12, 12, 12, 12));
         panel.setBackground(background);
 
         Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
@@ -60,6 +60,7 @@ class TextPanel {
         document.insertString(document.getLength(), content, document.getStyle("default"));
     }
 
+    // Dodaje czerwoną otoczkę, by oznaczyć że pole zawiera błąd
     void markAsError() {
         Border border = BorderFactory.createLineBorder(Color.RED);
         panel.setBorder(border);

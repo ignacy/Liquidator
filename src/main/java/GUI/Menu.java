@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -39,8 +40,9 @@ class Menu {
                         while ((line = in.readLine()) != null) {
                             stringBuffer.append(line).append("\n");
                         }
+                        input.clearText();
                         input.setText(stringBuffer.toString());
-                    } catch (IOException ex) {
+                    } catch (IOException | BadLocationException ex) {
                         System.out.println("Problem saving to a file");
                     }
                 }
@@ -87,7 +89,6 @@ class Menu {
                 System.exit(0);
             }
         });
-
     }
 
     JMenuBar getMenuBar() {

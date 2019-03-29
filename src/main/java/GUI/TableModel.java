@@ -14,6 +14,10 @@ public class TableModel extends DefaultTableModel {
         context.put("gdzie", "po prawej stronie");
     }
 
+    /*
+     * Nadpisuje zmiane wartości w tabeli, odświerzając wartości w
+     * kontekście który później jest wykorzystywany do renderowania szablonu.
+     */
     @Override
     public void setValueAt(Object newValue, int row, int column)
     {

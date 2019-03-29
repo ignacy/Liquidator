@@ -6,6 +6,9 @@ import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
 
+/**
+ * Punk wejściowy programu, uruchamia edytor.
+ */
 public class App {
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
