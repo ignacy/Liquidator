@@ -26,7 +26,7 @@ public class EditorGUI extends JFrame implements TableModelListener, KeyListener
     ErrorDetails errorLabel;
 
     private String initialTemplateContent = "Witaj! \n " +
-            "\nMożesz edytować ten {{ co }} rezultaty \n " +
+            "Możesz edytować ten {{ co }} rezultaty \n " +
             "pojawią się {{ gdzie }}. \n\n\n" +
             "{% for i in (1..5) %}\n" +
             "  {% for i in (1..i) %}" +
@@ -53,6 +53,7 @@ public class EditorGUI extends JFrame implements TableModelListener, KeyListener
         output = new TextPanel("", new Color(243, 243, 243));
         output.makeReadonly();
 
+        // Panel pokazujący detale błedu
         errorLabel = new ErrorDetails();
 
         try {
@@ -77,7 +78,6 @@ public class EditorGUI extends JFrame implements TableModelListener, KeyListener
 
         pack();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setSize(1600, 1000);
         setVisible(true);
         setLocationRelativeTo(null);
         setBackground(new Color(255, 255, 255));

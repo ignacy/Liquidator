@@ -29,7 +29,7 @@ class Intro {
                     try {
                         Desktop.getDesktop().browse(new URI(documentationLink));
                     } catch (URISyntaxException | IOException ex) {
-                        // Obsłużyć
+                        System.out.println("Could not open url " + ex.getMessage());
                     }
                 }
             });

@@ -29,5 +29,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+application {
 // Define the main class for the application
-mainClassName = 'Liquidator.App'
+    mainClassName = 'Liquidator.App'
+}
