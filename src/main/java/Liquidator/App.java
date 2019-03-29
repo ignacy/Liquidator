@@ -14,7 +14,6 @@ public class App {
         context.put("co", "tekst");
         context.put("gdzie", "po prawej stronie");
 
-
         MetalLookAndFeel.setCurrentTheme(new OceanTheme());
         try  {
             UIManager.setLookAndFeel(new MetalLookAndFeel());

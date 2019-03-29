@@ -36,15 +36,17 @@ public class EditorGUI extends JFrame {
 
         JPanel editingArea = new JPanel();
         editingArea.setLayout(new GridLayout(0, 2));
-        editingArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        editingArea.add(output.getScroll());
+
         editingArea.add(input.getScroll());
+        editingArea.add(output.getScroll());
+
 
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-
         Intro intro = new Intro();
+        InputTable table = new InputTable();
         getContentPane().add(intro.getLabel());
         getContentPane().add(editingArea);
+        getContentPane().add(table.getScroll());
 
         Menu menu = new Menu();
         setJMenuBar(menu.getMenuBar());
